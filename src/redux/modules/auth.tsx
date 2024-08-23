@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
+    // 权限按钮
     authButtons: {
         [propName: string]: any
     };
+    // 权限路由
     authRouter: string[];
 }
 

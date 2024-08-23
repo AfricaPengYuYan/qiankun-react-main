@@ -1,11 +1,15 @@
 import { ConfigProvider } from "antd";
 import { BrowserRouter } from "react-router-dom";
+import Router from "./router";
+import AuthRouter from "./router/authRouter";
 
 function App() {
     return (
         <BrowserRouter>
             <ConfigProvider>
-                <div id="qiankun-main"></div>
+                <AuthRouter>
+                    <Router />
+                </AuthRouter>
             </ConfigProvider>
         </BrowserRouter>
     )
