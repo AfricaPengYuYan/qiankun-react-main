@@ -1,17 +1,26 @@
-import { RouterObject } from "@/types/router";
+import { RouteObject } from "@/types/router";
+import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
+import LazyLoad from "./LazyLoad";
 
-const modules = import.meta.globEager("./modules/*.tsx");
-
-export const routerArray: RouterObject[] = [];
-
-Object.keys(modules).forEach(item => {
-    Object.keys(modules[item]).forEach((key: any) => {
-        routerArray.push(...modules[item][key]);
+export const routerArray: RouteObject[] = [];
+const metaRouters = import.meta.glob("./modules/*.tsx");
+Object.keys(metaRouters).forEach(item => {
+    Object.keys(metaRouters[item]).forEach((key: any) => {
+        routerArray.push(...metaRouters[item][key]);
     });
 });
 
-export const rootRouter: RouterObject[] = [
+export const rootRouter: RouteObject[] = [
+    {
+        path: "/login",
+        element: LazyLoad(React.lazy(() => import("@/pages/Login"))),
+        meta: {
+            requiresAuth: false,
+            title: "登录页",
+            key: "login"
+        }
+    },
     ...routerArray,
     {
         path: "*",

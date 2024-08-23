@@ -6,7 +6,7 @@ import React, { Suspense } from "react";
  * @param {Element} Comp 需要访问的组件
  * @returns element
  */
-const lazyLoad = (Comp: React.LazyExoticComponent<any>): React.ReactNode => {
+const LazyLoad = (Comp: React.LazyExoticComponent<any>): React.ReactNode => {
     return (
         <Suspense
             fallback={
@@ -26,4 +26,4 @@ const lazyLoad = (Comp: React.LazyExoticComponent<any>): React.ReactNode => {
     );
 };
 
-export default lazyLoad;
+export default LazyLoad;

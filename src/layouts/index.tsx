@@ -10,7 +10,7 @@ export const LayoutIndex = () => {
 
     return (
         <section className="container">
-            <Sider trigger={null} collapsed={isCollapse} width={220} theme="dark">
+            <Sider trigger={null} width={220} theme="dark">
                 <LayoutMenu></LayoutMenu>
             </Sider>
             <Layout>

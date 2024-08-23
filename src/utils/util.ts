@@ -1,4 +1,4 @@
-import { RouterObject } from "@/types/router";
+import { RouteObject } from "@/types/router";
 
 /**
  * @description 获取localStorage
@@ -78,8 +78,8 @@ export const getOpenKeys = (path: string) => {
  * @param {Array} routes 路由列表
  * @returns array
  */
-export const searchRoute = (path: string, routes: RouterObject[] = []): RouterObject => {
-    let result: RouterObject = {};
+export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObject => {
+    let result: RouteObject = {};
     for (const item of routes) {
         if (item.path === path) return item;
         if (item.children) {

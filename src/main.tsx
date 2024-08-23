@@ -1,3 +1,4 @@
+import "@/assets/styles/reset.less";
 import { persistor, store } from "@/redux";
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
