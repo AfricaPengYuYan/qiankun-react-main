@@ -3,7 +3,7 @@ import { TypedUseSelectorHook, useDispatch as useReduxDispatch, useSelector as u
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import auth from "./modules/auth";
-import global from "./modules/global"
+import global from "./modules/global";
 
 const reducer = combineReducers({
     auth,
