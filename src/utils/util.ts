@@ -1,15 +1,16 @@
-import { RouteObject } from "@/types/router";
+import { RouteObject } from "#/router";
 
 /**
  * @description 获取localStorage
  * @param {String} key Storage名称
  * @return string
  */
-export const localGet = (key: string) => {
-    const value = window.localStorage.getItem(key);
+export const getStorage = (key: string) => {
     try {
         return JSON.parse(window.localStorage.getItem(key) as string);
     } catch (error) {
+        console.error(error);
+        const value = window.localStorage.getItem(key);
         return value;
     }
 };
@@ -20,7 +21,7 @@ export const localGet = (key: string) => {
  * @param {Any} value Storage值
  * @return void
  */
-export const localSet = (key: string, value: any) => {
+export const setStorage = (key: string, value: any) => {
     window.localStorage.setItem(key, JSON.stringify(value));
 };
 
@@ -29,7 +30,7 @@ export const localSet = (key: string, value: any) => {
  * @param {String} key Storage名称
  * @return void
  */
-export const localRemove = (key: string) => {
+export const removeStorage = (key: string) => {
     window.localStorage.removeItem(key);
 };
 
@@ -37,7 +38,7 @@ export const localRemove = (key: string) => {
  * @description 清除所有localStorage
  * @return void
  */
-export const localClear = () => {
+export const clearStorage = () => {
     window.localStorage.clear();
 };
 
@@ -119,7 +120,8 @@ export const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) =>
         for (let i = 0; i < menuList.length; i++) {
             getNodePath(menuList[i]);
         }
-    } catch (e) {
+    } catch (error) {
+        console.error(error);
         return tempPath.map(item => item.title);
     }
 };
@@ -142,14 +144,18 @@ export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]
 
 /**
  * @description 使用递归处理路由菜单，生成一维数组，做菜单权限判断
- * @param {Array} menuList 所有菜单列表
- * @param {Array} newArr 菜单的一维数组
- * @return array
+ * @param {Array} routerList 所有菜单列表
+ * @return string[]
  */
-export function handleRouter(routerList: Menu.MenuOptions[], newArr: string[] = []) {
-    routerList.forEach((item: Menu.MenuOptions) => {
-        typeof item === "object" && item.path && newArr.push(item.path);
-        item.children && item.children.length && handleRouter(item.children, newArr);
+export function handleRouter(routerList: Menu.MenuOptions[]): string[] {
+    const newArr: string[] = [];
+    routerList.forEach((item) => {
+        if (typeof item === "object" && item !== null && item.path) {
+            newArr.push(item.path);
+        }
+        if (item.children && item.children.length > 0) {
+            newArr.push(...handleRouter(item.children));
+        }
     });
     return newArr;
 }
@@ -175,6 +181,7 @@ export const deepCopy = <T>(obj: any): T => {
     try {
         newObj = obj.push ? [] : {};
     } catch (error) {
+        console.error(error);
         newObj = {};
     }
     for (const attr in obj) {

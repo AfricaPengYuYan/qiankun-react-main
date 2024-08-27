@@ -2,7 +2,7 @@ import { HOME_URL } from "@/config/config";
 import { RootState, useSelector } from "@/redux";
 import { searchRoute } from "@/utils/util";
 import { Navigate, useLocation } from "react-router-dom";
-import { rootRouter } from ".";
+import { globalRoute } from ".";
 
 /**
  * @description 路由守卫组件
@@ -13,7 +13,7 @@ const AuthRouter = (props: { children: JSX.Element }) => {
     const { authRouter } = useSelector((state: RootState) => state.auth);
 
     const { pathname } = useLocation();
-    const route = searchRoute(pathname, rootRouter);
+    const route = searchRoute(pathname, globalRoute());
 
     // * 判断当前路由是否需要访问权限(不需要权限直接放行)
     if (!route.meta?.requiresAuth) return props.children;

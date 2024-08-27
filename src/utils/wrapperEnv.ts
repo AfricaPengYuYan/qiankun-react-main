@@ -12,7 +12,7 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
             try {
                 realName = JSON.parse(realName);
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
         }
         ret[envName] = realName;
