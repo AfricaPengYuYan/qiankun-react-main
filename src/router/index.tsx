@@ -1,6 +1,6 @@
+import { RouteObject } from "#/types/router";
 import { EXCLUDEDPATHS, HOME_URL } from "@/config/config";
 import { APPS } from "@/qiankun";
-import { RouteObject } from "@/types/router";
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import { LayoutIndex } from "./Constant";

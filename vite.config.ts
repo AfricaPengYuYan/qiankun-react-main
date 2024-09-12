@@ -39,7 +39,7 @@ export default defineConfig((mode) => {
         resolve: {
             alias: {
                 "@": resolve(__dirname, "./src"),
-                "#": resolve(__dirname, "./src/types")
+                "#": resolve(__dirname, "./types")
             }
         }
     }
