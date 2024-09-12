@@ -1,4 +1,4 @@
-import { RouteObject } from "#/types/router";
+import { RouteObject } from "#/router";
 
 /**
  * @description 获取localStorage

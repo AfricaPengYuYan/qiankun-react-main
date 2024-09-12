@@ -1,4 +1,4 @@
-import { RouteObject } from "#/types/router";
+import { RouteObject } from "#/router";
 import { EXCLUDEDPATHS, HOME_URL } from "@/config/config";
 import { APPS } from "@/qiankun";
 import React from "react";
