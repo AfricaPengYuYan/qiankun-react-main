@@ -5,7 +5,7 @@ export const APPS = [
     {
         name: 'qiankun-vue-system',
         container: '#qiankun-main',
-        entry: 'http://localhost:13100',
+        entry: '//localhost:13100',
         activeRule: '/qiankun-vue-system',
     },
 ];
