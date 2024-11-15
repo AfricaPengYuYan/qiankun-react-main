@@ -3,10 +3,16 @@ import { addGlobalUncaughtErrorHandler, registerMicroApps, start } from 'qiankun
 // 微前端 - 子应用列表
 export const APPS = [
     {
-        name: 'qiankun-vue-system',
+        name: 'system-role',
         container: '#qiankun-main',
         entry: '//localhost:13100',
-        activeRule: '/qiankun-vue-system',
+        activeRule: '/qiankun-vue-system/role',
+    },
+    {
+        name: 'system-user',
+        container: '#qiankun-main',
+        entry: '//localhost:13100',
+        activeRule: '/qiankun-vue-system/user',
     },
 ];
 
